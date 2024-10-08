@@ -4,9 +4,10 @@ import speech_recognition as sr
 from pydub import AudioSegment
 
 # Download video from instagram post
-def download_instagram_video(video_url):
-    L = instaloader.Instaloader()
+def download_instagram_video(L, video_url):
+    # L = instaloader.Instaloader()
     shortcode = video_url.split("/")[-2]  # Extract shortcode from the URL
+    print(shortcode)
     post = instaloader.Post.from_shortcode(L.context, shortcode)
     L.download_post(post, target="downloads")  # Downloads to 'downloads' folder
     video_file = 'downloads/' + video_url.split("/")[-2] + '.mp4'
